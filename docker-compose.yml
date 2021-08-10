@@ -1,0 +1,10 @@
+version: "3.7"
+
+services:
+  django:
+    build: .
+    command: bash -c "service cron start && cd app && python ./manage.py crontab add && tail -F anything"
+    volumes:
+      - .:/usr/src/app/
+    ports:
+      - 8001:8001
